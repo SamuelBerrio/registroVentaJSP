@@ -10,24 +10,77 @@
 <html>
 <head>
     <title>List Compras</title>
+    <style>
+        .my-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        .my-table th, .my-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .my-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .my-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        body {
+            background-color: #2196F3;
+        }
+    </style>
 </head>
 <body>
-<h1>List employees</h1>
-<%
-    List<Compra> employeeList = (List)request.getSession().getAttribute("compraList");
-    int cont=1;
-    for (Compra compra : employeeList){
+<div>
+    <table class="my-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>UserName</th>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            List<Compra> employeeList = (List)request.getSession().getAttribute("compraList");
+            int cont=1;
+            for (Compra compra : employeeList){
 
-%>
-<p><b>Compra <%=cont%></b></p>
-<p>Nombre <%=compra.getCliente().getName()%></p>
-<p>Usuario <%=compra.getCliente().getUsername()%></p>
-<p>Product <%=compra.getProduct()%></p>
-<p>Price <%=String.valueOf(compra.getPrice())%></p>
-<p>------------------------</p>
-<%cont=cont+1;%>
-
-<%}%>
+        %>
+        <tr>
+            <td><%=compra.getCliente().getName()%></td>
+            <td><%=compra.getCliente().getUsername()%></td>
+            <td><%=compra.getProduct()%></td>
+            <td>$<%=String.valueOf(compra.getPrice())%></td>
+        </tr>
+        <%cont=cont+1;%>
+        <%}%>
+        </tbody>
+    </table>
+</div>
+<form action="/lista-compras" method="get" style="padding-top: 20px">
+    <input type="submit" value="Volver a Registrar Compras">
+</form>
 </body>
 </html>

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ArchivoUtil {
     public static ArrayList<String> leerArchivo(String ruta) throws IOException {
 
-        ArrayList<String> content = new ArrayList<String>();
+        ArrayList<String> content = new ArrayList<>();
         FileReader fr = new FileReader(ruta);
         BufferedReader bfr = new BufferedReader(fr);
         String linea = "";

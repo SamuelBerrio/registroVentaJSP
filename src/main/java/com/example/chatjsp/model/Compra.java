@@ -3,11 +3,11 @@ package com.example.chatjsp.model;
 public class Compra {
     private String product;
 
-    private double price;
+    private Double price;
 
     private Cliente cliente;
 
-    public Compra(String product, double price, Cliente cliente) {
+    public Compra(String product, Double price, Cliente cliente) {
         this.product = product;
         this.price = price;
         this.cliente = cliente;
@@ -25,11 +25,11 @@ public class Compra {
         this.product = product;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

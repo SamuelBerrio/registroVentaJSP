@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Persistence {
-    public static final String RUTA_ARCHIVO_CLIENTES = "src/main/java/com/example/chatjsp/persistence/resources/compras.txt";
+    public static final String RUTA_ARCHIVO_COMPRAS = "src/main/java/com/example/chatjsp/persistence/resources/compras.txt";
 
     public static void saveCompras(ArrayList<Compra> compraArrayList) throws IOException {
 
@@ -20,14 +20,15 @@ public class Persistence {
                     compra.getCliente().getLastname()+"~"+compra.getCliente().getUsername()+"~"+
                     compra.getCliente().getPassword()+"\n";
         }
-        ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_CLIENTES, content, false);
+        ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_COMPRAS, content, false);
+        System.out.println("Arreglo guardado");
     }
 
     public static ArrayList<Compra> loadCompras() throws FileNotFoundException, IOException {
 
         ArrayList<Compra> compraArrayList = new ArrayList<>();
 
-        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_CLIENTES);
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_COMPRAS);
 
         for (String s : contenido) {
             Compra compra = new Compra();
@@ -40,7 +41,7 @@ public class Persistence {
             compra.setCliente(new Cliente(name,lastName,userName,password));
             compraArrayList.add(compra);
         }
-
+        System.out.println("Arreglo cargado");
         return compraArrayList;
     }
 }
